@@ -169,13 +169,13 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
     fun startRecordScreen() {
         try {
             try {
-                val dir: File =
-                    File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/ScreenRecordDemo/")
-            if(!dir.exists()) {
-                dir.mkdirs();
-            }
-                mFileName = pluginBinding!!.dir
-            //  mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
+//                val dir: File =
+//                    File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/ScreenRecordDemo/")
+//            if(!dir.exists()) {
+//                dir.mkdirs();
+//            }
+//                mFileName = pluginBinding!!.dir
+              mFileName = pluginBinding!!.applicationContext.Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)+ "/ScreenRecordDemo/";
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
                 println("Error creating name")
