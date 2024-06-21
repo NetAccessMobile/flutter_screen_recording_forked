@@ -177,7 +177,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
 //                mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
                 val direct  =
                     File(Environment.getExternalStorageDirectory() , "/Download/DirName")
-
+                    println("$direct  ${direct.absolutePath}")
                 if (!direct.exists()) {
 //                    val wallpaperDirectory: File = File(Environment.getExternalStorageDirectory()+"Download/DirName/")
 //                    wallpaperDirectory.mkdirs()
