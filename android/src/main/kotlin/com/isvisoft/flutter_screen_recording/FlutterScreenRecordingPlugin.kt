@@ -183,7 +183,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
 //                    wallpaperDirectory.mkdirs()
                     direct.mkdirs()
                 }
-              mFileName = direct.absolutePath
+              mFileName = pluginBinding!!.direct.absolutePath
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
                 println("Error creating name")
