@@ -172,7 +172,8 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
                     Environment.DIRECTORY_DOWNLOADS +"/recorder_demo"
                 )
                 if(!dir.exists()) dir.mkdirs()
-                mFileName = dir?.absolutePath
+                // mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
+                mFileName = pluginBinding!!.dir?.absolutePath
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
                 println("Error creating name")
