@@ -175,7 +175,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
 //                dir.mkdirs();
 //            }
 //                mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
-                val direct: File =
+                val direct  =
                     File(Environment.getExternalStorageDirectory() , "/Download/DirName")
 
                 if (!direct.exists()) {
@@ -183,7 +183,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
 //                    wallpaperDirectory.mkdirs()
                     direct.mkdirs()
                 }
-              mFileName = direct?.absolutepath
+              mFileName = direct.absolutePath
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
                 println("Error creating name")
