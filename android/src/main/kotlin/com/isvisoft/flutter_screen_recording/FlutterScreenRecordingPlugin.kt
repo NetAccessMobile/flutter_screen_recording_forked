@@ -9,7 +9,6 @@ import android.media.MediaRecorder
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
 import android.os.Build
-import android.os.Environment
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.core.app.ActivityCompat
@@ -24,7 +23,6 @@ import com.foregroundservice.ForegroundService
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import java.io.File
 
 
 class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.ActivityResultListener, FlutterPlugin, ActivityAware {
@@ -169,21 +167,6 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
     fun startRecordScreen() {
         try {
             try {
-//                val dir: File =
-//                    File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/ScreenRecordDemo/")
-//            if(!dir.exists()) {
-//                dir.mkdirs();
-//            }
-//                mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
-                val direct  =
-                    File(Environment.getExternalStorageDirectory() , "/Download/DirName")
-                    println("$direct  ${direct.absolutePath}")
-                if (!direct.exists()) {
-//                    val wallpaperDirectory: File = File(Environment.getExternalStorageDirectory()+"Download/DirName/")
-//                    wallpaperDirectory.mkdirs()
-                    direct.mkdirs()
-                }
-             // mFileName = pluginBinding!!.direct
                 mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
