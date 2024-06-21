@@ -9,20 +9,21 @@ import android.media.MediaRecorder
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
 import android.os.Build
+import android.os.Environment
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.core.app.ActivityCompat
+import com.foregroundservice.ForegroundService
+import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
+import java.io.File
 import java.io.IOException
-
-import com.foregroundservice.ForegroundService
-import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 
 
 class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.ActivityResultListener, FlutterPlugin, ActivityAware {
@@ -167,7 +168,11 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
     fun startRecordScreen() {
         try {
             try {
-                mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
+                val dir = File(
+                    Environment.DIRECTORY_DOWNLOADS +"/recorder_demo"
+                )
+                if(!dir.exists()) dir.mkdirs()
+                mFileName = dir?.absolutePath
                 mFileName += "/$videoName.mp4"
             } catch (e: IOException) {
                 println("Error creating name")
