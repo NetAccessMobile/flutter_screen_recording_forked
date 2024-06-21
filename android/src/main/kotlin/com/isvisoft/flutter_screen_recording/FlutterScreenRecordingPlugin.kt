@@ -9,6 +9,7 @@ import android.media.MediaRecorder
 import android.media.projection.MediaProjection
 import android.media.projection.MediaProjectionManager
 import android.os.Build
+import android.os.Environment
 import android.util.DisplayMetrics
 import android.util.Log
 import androidx.core.app.ActivityCompat
@@ -23,6 +24,7 @@ import com.foregroundservice.ForegroundService
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import java.io.File
 
 
 class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.ActivityResultListener, FlutterPlugin, ActivityAware {
@@ -168,7 +170,7 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
         try {
             try {
                 val dir: File =
-                    File(Environment.getExternalStorageDirectory() + "/Download/ScreenRecordDemo/")
+                    File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/ScreenRecordDemo/")
             if(!dir.exists()) {
                 dir.mkdirs();
             }
