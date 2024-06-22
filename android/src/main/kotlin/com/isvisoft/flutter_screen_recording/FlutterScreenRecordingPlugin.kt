@@ -168,10 +168,10 @@ class FlutterScreenRecordingPlugin() : MethodCallHandler, PluginRegistry.Activit
     fun startRecordScreen() {
         try {
             try {
-                val dir = File(
+                /*val dir = File(
                     Environment.DIRECTORY_DOWNLOADS +"/recorder_demo"
                 )
-                if(!dir.exists()) dir.mkdirs()
+                if(!dir.exists()) dir.mkdirs()*/
                 // mFileName = pluginBinding!!.applicationContext.externalCacheDir?.absolutePath
                 // mFileName = pluginBinding!!.applicationContext.dir?.absolutePath
                 mFileName += "$videoName.mp4"
